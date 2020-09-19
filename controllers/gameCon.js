@@ -1,12 +1,24 @@
-// const express = require("express");
-// const router = express.Router();
-// // const router = require("express").Router()
-// const db = require("../models");
+const express = require("express");
+const router = express.Router();
+const db = require("../models");
 
 //make them all async try catch 
 
 //index / games
     //find all the games and render the games index page with the context set as the found games
+router.get('/', async (req,res) =>{
+    try {
+        const data = await db.Game.find({});
+        
+        const context = {
+            games: data
+        }
+        res.render("/game/index", context)
+    } catch (error) {
+        console.log(error);
+        res.send({ message: "Internal server error" });
+    }
+})
 
 
 // games /new
@@ -35,4 +47,4 @@
 // delete games/:id
     // findByIdAndDelete loop through each of the games devs id and remove games. redirect to games page.
 
-// module.export = router;
+module.exports = router;
