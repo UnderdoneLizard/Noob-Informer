@@ -6,7 +6,7 @@ const db = require("../models");
 
 //index / games
     //find all the games and render the games index page with the context set as the found games
-router.get('/', async (req,res) =>{
+router.get("/", async (req,res) =>{
     try {
         const data = await db.Game.find({});
         
