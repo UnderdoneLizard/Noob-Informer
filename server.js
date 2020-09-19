@@ -1,13 +1,11 @@
 //External Modules
 const express = require('express');
-<<<<<<< HEAD
-=======
+
 //bring method override express session and connect mongo
 //require path
 
 //Internal modules 
 //require db and controllers index 
->>>>>>> 737b52f39e6a843e26e89b55ce97fd0a54572dc6
 
 //Instanced modules
 const app = express();
