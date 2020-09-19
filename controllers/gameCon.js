@@ -13,7 +13,7 @@ router.get("/", async (req,res) =>{
         const context = {
             games: data
         }
-        res.render("/game/index", context)
+        res.render("game/index", context)
     } catch (error) {
         console.log(error);
         res.send({ message: "Internal server error" });
