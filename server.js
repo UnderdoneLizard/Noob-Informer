@@ -1,6 +1,5 @@
 //External Modules
 const express = require('express');
-//Internal modules 
 
 //Instanced modules
 const app = express();
