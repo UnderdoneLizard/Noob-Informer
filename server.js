@@ -13,7 +13,7 @@ const path = require('path');
 // SECTION Internal modules 
 //require db and controllers index 
 const db = require('./models')
-const controller = require('./controllers')
+const controllers = require('./controllers')
 
 //Instanced modules
 const app = express();
@@ -40,12 +40,18 @@ app.use(methodOverride("_method"));
 
 //Routes
 //base route that will take user to the home page 
+app.get("/", async (req,res) => {
+    res.render("index");
+})
+
+app.use('/games', controllers.game);
 //auth routes
 // app.use('/', controller.auth)
 //game routes
-app.use('/', controller.game);
 //dev routes
-app.use('/', controller.dev);
+//app.use('/dev', controllers.dev); 
+
+// app.use('/', controllers.auth)
 
 //Server Listener
 app.listen(PORT, () => {
