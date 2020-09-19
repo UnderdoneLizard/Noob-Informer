@@ -1,12 +1,12 @@
 // SECTION External Modules
 const express = require('express');
 //bring method override express session and connect mongo
-const methodOverride = require("method-over");
+const methodOverride = require("method-override");
 const session = require("express-session");
 //require path
 const path = require('path');
 
-const MongoStore = require("connect-mongo")('session');
+// const MongoStore = require("connect-mongo")('session');
 
 
 
