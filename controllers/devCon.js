@@ -1,3 +1,8 @@
+// const express = require("express");
+// const router = express.Router();
+// // const router = require("express").Router()
+// const db = require("../models");
+
 //make them all async try catch 
 
 //index / devs
