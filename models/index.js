@@ -21,3 +21,9 @@ mongoose.connection.on("disconnect", function (event) {
 console.log("mongodb disconnected", event);
 });
 //export all the required models
+
+module.exports = {
+    Game: require("./Game"),
+    Dev: require("./Dev"),
+    User: require("./User")
+}
