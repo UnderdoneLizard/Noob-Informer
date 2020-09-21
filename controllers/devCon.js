@@ -26,11 +26,7 @@ router.get("/", async (req,res) => {
     // database search for all games(context)
 router.get("/new" , async (req, res) => {
     try {
-        const games = await db.Game.find({});
-        const context = {
-            games: games
-        }
-        res.render("dev/new", context)
+        res.render("dev/new")
     } catch (error) {
         console.log(error);
         res.send({ message: "Internal server error" });
@@ -44,7 +40,17 @@ router.get("/new" , async (req, res) => {
     // add to games array in db save array
     // redirect to index (/dev)
 
-router.post("")
+router.post("/", async (req, res) => {
+    try {
+        
+        await db.Dev.create(req.body);
+        res.redirect("/devs");
+
+    } catch (error) {
+        console.log(error);
+        res.send({ message: "Internal server error" });
+    }
+})
 
 
 // show route devs/:id
