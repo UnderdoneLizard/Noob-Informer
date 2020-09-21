@@ -24,13 +24,15 @@ router.get("/", async (req,res) =>{
 // games /new
     // render form page to add games company
     // database search for all games(context)
+    router.get('/new', (req, res) =>{
+        res.render('new.ejs')
+    })
 
     // create / games
     // db.Dev.create 
     // loop though games in req.body and database search for i.d.'s
     // add to games array in db save array
     // redirect to index (/games)
-
 
 // show route games/:id
     // db search with games i.d. and render page with context
