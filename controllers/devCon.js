@@ -90,6 +90,18 @@ router.get("/:id/edit", async (req,res) => {
 // update  dev/:id/update
     //findByIdAndUpdate  redirect  to dev page.
 
+router.put("/:id", async (req,res) => {
+    console.log('hit')
+    try {
+        const dev = await db.Dev.findByIdAndUpdate(req.params.id, req.body, {new:true})
+        console.log(dev)
+        res.redirect(`/devs/${req.params.id}`)
+    } catch (error) {
+        console.log(error);
+        res.send({ message: "Internal server error" });
+    }
+})
+
 // delete dev/:id
     // findByIdAndDelete loop through each of the devs games id and remove dev. redirect to devs page.
 

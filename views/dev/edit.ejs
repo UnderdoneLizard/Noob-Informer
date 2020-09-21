@@ -10,7 +10,7 @@
     <!-- create form with user input -->
     <!--  action = dev/ :id/ update method=POST -->
 
-    <form action="/devs?_method=PUT" method="POST">
+    <form action="/devs/<%= dev._id %>?_method=PUT" method="POST">
         <input type="text" name="name" value="<%= dev.name %>"> <br>
         <input type="text" name="description" value="<%= dev.description %>"> <br>
         <input type="text" name="icon" value="<%= dev.icon %>"> <br>
