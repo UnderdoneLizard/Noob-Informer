@@ -10,7 +10,7 @@
     <h1>hit</h1>
     <% games.forEach(game => { %>
         <a href="/games/<%= game._id %>"><%= game.title %></a>
-        
+        <a href="/games/<%= game._id %>/edit">Edit</a>
     <% }) %>
 </body>
 </html>
