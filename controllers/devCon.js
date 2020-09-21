@@ -1,7 +1,7 @@
-// const express = require("express");
-// const router = express.Router();
-// // const router = require("express").Router()
-// const db = require("../models");
+const express = require("express");
+const router = express.Router();
+
+const db = require("../models");
 
 //make them all async try catch 
 
@@ -12,6 +12,19 @@
 // devs /new
     // render form page to add dev company
     // database search for all games(context)
+router.get("/new" , async (req, res) => {
+    try {
+        const games = await db.Game.find({});
+        const context = {
+            games: games
+        }
+        res.render("dev/new", context)
+    } catch (error) {
+        console.log(error);
+        res.send({ message: "Internal server error" });
+    }
+})
+
 
     // create / dev
     // db.Dev.create 
