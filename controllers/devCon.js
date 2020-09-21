@@ -44,6 +44,8 @@ router.get("/new" , async (req, res) => {
     // add to games array in db save array
     // redirect to index (/dev)
 
+router.post("")
+
 
 // show route devs/:id
     // db search with dev i.d. and render page with context
