@@ -73,6 +73,19 @@ router.get("/:id", async (req,res) => {
     // render edit form
     // search for dev's i.d. and redirect the edit form with context 
 
+router.get("/:id/edit", async (req,res) => {
+    try {
+        const dev = await db.Dev.findById(req.params.id)
+        const context = {
+            dev: dev
+        }
+        res.render("dev/edit", context);
+    } catch (error) {
+        console.log(error);
+        res.send({ message: "Internal server error" });
+    }
+})
+
 
 // update  dev/:id/update
     //findByIdAndUpdate  redirect  to dev page.
