@@ -43,12 +43,7 @@ router.get("/", async (req,res) =>{
     // redirect to index (/games)
     router.post('/', async (req, res)=>{
         try {
-            const createdGame = await db.Game.create(req.body);
-            const foundDev = await db.Dev.findById(req.body.author);
-
-            foundDev.games.push(createdGame);
-            await foundDev.save();
-
+            await db.Game.create(req.body);
             res.redirect('/games')
         } catch (error) {
             console.log(error);
