@@ -55,6 +55,18 @@ router.post("/", async (req, res) => {
 
 // show route devs/:id
     // db search with dev i.d. and render page with context
+router.get("/:id", async (req,res) => {
+    try {
+        const dev = await (await db.Dev.findById(req.params.id)).populate("games")
+        context = {
+            dev: dev
+        }
+        res.render("dev/show", context);
+    } catch (error) {
+        console.log(error);
+        res.send({ message: "Internal server error" });
+    }
+})
 
 
 // edit /:id/edit 
