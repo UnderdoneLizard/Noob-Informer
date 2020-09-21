@@ -9,7 +9,8 @@
     <!-- games.ForEach list out each game && icon -->
     <h1>hit</h1>
     <% games.forEach(game => { %>
-        <%= game.title %> 
+        <a href="/games/<%= game._id %>"><%= game.title %></a>
+        <a href="/games/<%= game._id %>/edit">Edit</a>
     <% }) %>
 </body>
 </html>
