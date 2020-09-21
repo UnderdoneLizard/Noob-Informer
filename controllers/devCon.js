@@ -7,7 +7,19 @@ const db = require("../models");
 
 //index / devs
     //find all the devs and render the dev index page with the context set as the found devs
-
+router.get("/", async (req,res) => {
+    try {
+        const devs = await db.Dev.find({});
+        context = {
+            devs:devs
+        }
+        res.render("dev/index",context);
+    } catch (error) {
+        console.log(error);
+        res.send({ message: "Internal server error" });
+    }
+    }
+)
 
 // devs /new
     // render form page to add dev company
@@ -48,4 +60,4 @@ router.get("/new" , async (req, res) => {
 // delete dev/:id
     // findByIdAndDelete loop through each of the devs games id and remove dev. redirect to devs page.
 
-// module.export = router;
+module.exports = router;

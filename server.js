@@ -44,12 +44,12 @@ app.get("/", async (req,res) => {
     res.render("index");
 })
 
-app.use('/games', controllers.game);
+//game routes
+app.use("/games", controllers.game);
 //auth routes
 // app.use('/', controllers.auth)
-//game routes
 //dev routes
-//app.use('/dev', controllers.dev); 
+app.use("/devs", controllers.dev); 
 
 // app.use('/', controllers.auth)
 
