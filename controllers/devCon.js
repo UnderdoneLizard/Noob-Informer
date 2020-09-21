@@ -93,8 +93,7 @@ router.get("/:id/edit", async (req,res) => {
 router.put("/:id", async (req,res) => {
     console.log('hit')
     try {
-        const dev = await db.Dev.findByIdAndUpdate(req.params.id, req.body, {new:true})
-        console.log(dev)
+        await db.Dev.findByIdAndUpdate(req.params.id, req.body, {new:true})
         res.redirect(`/devs/${req.params.id}`)
     } catch (error) {
         console.log(error);
