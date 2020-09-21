@@ -8,7 +8,7 @@
 <body>
     
     <% devs.forEach(dev => { %>
-    <%= dev.name %> 
+    <a href="/devs/<%= dev._id %>"><%= dev.name %> </a>
     <% }) %>
     <!-- devs.ForEach list out each dev && icon -->
 </body>

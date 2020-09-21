@@ -55,15 +55,52 @@ router.post("/", async (req, res) => {
 
 // show route devs/:id
     // db search with dev i.d. and render page with context
+router.get("/:id", async (req,res) => {
+    try {
+        const dev = await (await db.Dev.findById(req.params.id)).populate("games")
+        context = {
+            dev: dev
+        }
+        res.render("dev/show", context);
+    } catch (error) {
+        console.log(error);
+        res.send({ message: "Internal server error" });
+    }
+})
 
 
 // edit /:id/edit 
     // render edit form
     // search for dev's i.d. and redirect the edit form with context 
 
+router.get("/:id/edit", async (req,res) => {
+    try {
+        const dev = await db.Dev.findById(req.params.id)
+        const context = {
+            dev: dev
+        }
+        res.render("dev/edit", context);
+    } catch (error) {
+        console.log(error);
+        res.send({ message: "Internal server error" });
+    }
+})
+
 
 // update  dev/:id/update
     //findByIdAndUpdate  redirect  to dev page.
+
+router.put("/:id", async (req,res) => {
+    console.log('hit')
+    try {
+        const dev = await db.Dev.findByIdAndUpdate(req.params.id, req.body, {new:true})
+        console.log(dev)
+        res.redirect(`/devs/${req.params.id}`)
+    } catch (error) {
+        console.log(error);
+        res.send({ message: "Internal server error" });
+    }
+})
 
 // delete dev/:id
     // findByIdAndDelete loop through each of the devs games id and remove dev. redirect to devs page.
