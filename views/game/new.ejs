@@ -3,10 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>New Game</title>
 </head>
 <body>
+    <h1>Add A New Game</h1>
+    <form action="/games/new" method="POST">
+        Title: <input type="text" name="title"/><br>
+        Release Date: <input type="text" name="releaseDate"/><br>
+        Game Description: <input type="text" name="description"/><br>
+        Image: <input type="text" name="img"/><br>
+        Genre: <input type="text" name="genre"/><br>
+        Game Link: <input type="text" name="link"/><br>
+        Devs: <input type="text" name="link"/><br>
+        <input type="submit" value="Create Game" />
+    </form>
+    
     <!-- create form with user input -->
     <!--  action = game/ :id/ create method=POST -->
 </body>
 </html>
+<!-- title: {type: String, required: true, unique: true},
+    releaseDate: {type: Date, required: true},
+    description: {type: String, required: true},
+    img: {type: String, required: true},
+    genre: [{type: String, required: true}],
+    link: {type: String, required: true},
+    dev: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Dev",
+    }] -->

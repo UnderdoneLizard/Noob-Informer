@@ -24,8 +24,16 @@ router.get("/", async (req,res) =>{
 // games /new
     // render form page to add games company
     // database search for all games(context)
-    router.get('/new', (req, res) =>{
-        res.render('new.ejs')
+    router.get('/new', async (req, res) =>{
+        try {
+            const devs = await db.Dev.find({});
+            const context = {devs: devs};
+            
+            res.render('game/new', context);
+        } catch (error) {
+            console.log(error);
+            res.send({message: "Internal server error"});
+        }
     })
 
     // create / games
@@ -33,6 +41,22 @@ router.get("/", async (req,res) =>{
     // loop though games in req.body and database search for i.d.'s
     // add to games array in db save array
     // redirect to index (/games)
+    router.post('/', async (req, res)=>{
+        try {
+            const createdGame = await db.Game.create(req.body);
+            const foundDev = await db.Dev.findById(req.body.author);
+
+            foundDev.games.push(createdGame);
+            await foundDev.save();
+
+            res.redirect('/games')
+        } catch (error) {
+            console.log(error);
+            res.send({message: "Internal server error"});
+        }
+    })
+
+
 
 // show route games/:id
     // db search with games i.d. and render page with context
