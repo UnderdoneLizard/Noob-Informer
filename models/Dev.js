@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 //make schema 
 const devSchema = new mongoose.Schema(
     {
-        title: {type: String, required: true},
+        name: {type: String, required: true},
         games: [{
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Game',
