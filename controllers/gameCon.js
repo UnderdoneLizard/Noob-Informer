@@ -72,7 +72,11 @@ router.get("/:id/edit", async (req, res) => {
   try {
     const id = req.params.id;
     const foundGames = await db.Game.findById(id);
-    const context = { game: foundGames };
+    const devs = await db.Dev.find({})
+    const context = {
+        game: foundGames, 
+        devs: devs
+    };
     res.render("game/edit", context);
   } catch (error) {
     console.log(error);
@@ -97,6 +101,19 @@ router.put("/:id", async (req, res) => {
   }
 });
 
+//add dev
+router.put("/:id/add", async (req,res) => {
+    try {
+        
+
+
+    } catch (error) {
+        console.log(error);
+        return res.send({ message: "Internal server error" });
+    }
+})
+
+//delete route
 router.delete('/:id', async (req, res) => {
   try {
     const id = req.params.id;
