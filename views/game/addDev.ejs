@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>add a dev</h1>
+    <form action="/games/<%= game._id %>addDev?_method=PUT" mehod="POST">
+        <select name="dev" id="">
+            <option default>Select dev</option>
+            <% devs.forEach(dev => { %>
+            <option value="<%= dev._id %> "><%= dev.name %> </option>
+            <% }) %>
+        </select>
+        <input type="submit" value="done">
+    </form>
+</body>
+</html>

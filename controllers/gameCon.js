@@ -45,6 +45,7 @@ router.get("/new", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     await db.Game.create(req.body);
+    console.log(req.body);
     res.redirect("/games");
   } catch (error) {
     console.log(error);
@@ -136,9 +137,11 @@ router.delete('/:id', async (req, res) => {
 
 router.get('/:id/addDev', async(req,res) => {
     try {
-        const devs = db.Dev.find({});
+        const devs = await db.Dev.find({});
+        const game = await db.Game.findById(req.params.id)
         const context = {
-            devs: devs
+            devs: devs,
+            game: game
         }
         res.render("game/addDev", context);
     } catch (error) {
