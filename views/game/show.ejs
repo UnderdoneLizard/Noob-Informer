@@ -17,7 +17,7 @@
     <div>
         <p><%= game.description %></p>
     </div>
-    <% if (game.dev) { %>
+    <% if (game.dev.length > 0) { %>
         <%= game.dev[0] %> 
     <% } %> 
     <a href="/games">Games Page</a> |

@@ -14,7 +14,7 @@
     Description: <%= dev.description %> 
     <!-- add the link to game._id page games corresponding to dev company -->
     Company Website: <a href="<%= dev.link %>"><%= dev.name %> </a>
-    <% if (dev.games) { %>
+    <% if (dev.games.length > 0)) { %>
         <%= dev.games[0] %> 
     <% } %> 
     <form action="/devs/<%= dev._id %>?_method=DELETE" method="POST">
