@@ -45,7 +45,6 @@ router.get("/new", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     await db.Game.create(req.body);
-    console.log(req.body);
     res.redirect("/games");
   } catch (error) {
     console.log(error);
@@ -144,6 +143,32 @@ router.get('/:id/addDev', async(req,res) => {
             game: game
         }
         res.render("game/addDev", context);
+    } catch (error) {
+        console.log(error);
+        res.send({ message: "Internal server error" })
+    }
+})
+
+router.put('/:id/addDev', async(req,res) => {
+    try {
+        console.log("hello")
+        const dev = await db.Dev.findById(req.body.dev);
+        const game = await db.Game.findById(req.params.id);
+        if(game.dev){
+        game.dev.push(req.body.dev);
+        }else{
+            game.dev = [dev]
+        }
+        if(dev.game){
+        dev.games.push(req.params.id);
+        }else {
+            dev.games = [game]
+        }
+        await game.save();
+        await dev.save();
+        console.log(game);
+        console.log(dev);
+        res.redirect(`/games/${game.id}`);
     } catch (error) {
         console.log(error);
         res.send({ message: "Internal server error" })
