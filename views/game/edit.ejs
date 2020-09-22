@@ -11,12 +11,13 @@
     <!--  action = game/ :id/ update method=POST -->
     <h1>Edit <%= game.title %> </h1>
     <form action="/games/<%= game._id %>?_method=PUT" method="POST">
-        Title: <input type="text" name="title"/><br>
-        Release Date: <input type="text" name="releaseDate"/><br>
-        Game Description: <input type="text" name="description"/><br>
-        Image: <input type="text" name="img"/><br>
-        Genre: <input type="text" name="genre"/><br>
-        Game Link: <input type="text" name="link"/><br>
+        Title: <input type="text" name="title" value="<%= game.title %> "/><br>
+        Release Date: <input type="text" name="releaseDate"
+        value="<%= game.releaseDate %>"/><br>
+        Game Description: <input type="text" name="description" value="<%= game.description %>"/><br>
+        Image: <input type="text" name="img" value="<%= game.img%> "/><br>
+        Genre: <input type="text" name="genre" value="<%= game.genre %> "/><br>
+        Game Link: <input type="text" name="link" value="<%= game.link %>"/><br>
         <input type="submit" value="Submit Changes" />
     </form>
 </body>
