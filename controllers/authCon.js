@@ -24,7 +24,7 @@ router.post("/register", async (req, res) => {
     try {
         const foundEmail = await db.User.findOne({email: req.body.email})
         const foundUsername = await db.User.findOne({username: req.body.username})
-        if(foundEmail || foundUsername) res.render("/register",{message: "username or email taken"})
+        if(foundEmail || foundUsername) res.render("auth/register",{message: "username or email taken"})
 
         const salt = await bcrypt.genSalt(10);
         const hash = await bcrypt.hash(req.body.password, salt);
@@ -41,7 +41,7 @@ router.post("/register", async (req, res) => {
 // login form (/login)
     // render login form 
 router.get('/login', (req,res) =>{
-    res.render("/auth/login")
+    res.render("auth/login", {message:''})
 })
 
 
@@ -58,10 +58,16 @@ router.get('/login', (req,res) =>{
         // return error email || password incorrect
 router.post("/login", async(req,res) => {
     try {
-        const foundUser = await scrollBy.User.findOne({email: req.body.email});
+        const foundUser = await db.User.findOne({email: req.body.email});
         if(!foundUser){
-            return res.render('/')
+            return res.render('auth/login',{message: "Username or password incorrect"});
         }
+        const match = await bcrypt.compare(req.body.password, foundUser.password);
+        if(!match){
+            return res.render('auth/login', {message: "Username or password incorrect"});
+        }
+
+        res.redirect('/devs');
     }catch(error){
         console.log(error);
         res.send({ message: "Internal Server Error", err: error });
