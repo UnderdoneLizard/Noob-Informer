@@ -51,7 +51,7 @@ app.use("/games", controllers.game);
 //dev routes
 app.use("/devs", controllers.dev); 
 
-// app.use('/', controllers.auth)
+app.use('/', controllers.auth)
 
 //Server Listener
 app.listen(PORT, () => {
