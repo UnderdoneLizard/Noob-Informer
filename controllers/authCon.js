@@ -82,6 +82,7 @@ router.post("/login", async(req,res) => {
     }
 })
 
+//logout
 router.delete('/logout', async (req, res) => {
     await req.session.destroy();
     res.redirect('/');
@@ -90,4 +91,5 @@ router.delete('/logout', async (req, res) => {
     // use req.sessions.destroy();
     // ten redirect to home page
 // router.post("/logout", async ())
+
 module.exports = router;

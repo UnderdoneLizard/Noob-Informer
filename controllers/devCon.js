@@ -57,7 +57,7 @@ router.post("/", async (req, res) => {
     // db search with dev i.d. and render page with context
 router.get("/:id", async (req,res) => {
     try {
-        const dev = await (await db.Dev.findById(req.params.id)).populate("games")
+        const dev = await db.Dev.findById(req.params.id).populate("games")
         context = {
             dev: dev
         }
@@ -111,8 +111,9 @@ router.delete("/:id", async(req,res) => {
         delDev.games.forEach(async (game) =>{
             const temp = await db.Game.findById(game);
             temp.dev.remove(delDev);
+            temp.save();
         })
-        redirect("/devs");
+        res.redirect("/devs");
 
     } catch (error) {
         console.log(error);
