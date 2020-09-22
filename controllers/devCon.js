@@ -112,7 +112,7 @@ router.delete("/:id", async(req,res) => {
             const temp = await db.Game.findById(game);
             temp.dev.remove(delDev);
         })
-
+        redirect("/devs");
 
     } catch (error) {
         console.log(error);
