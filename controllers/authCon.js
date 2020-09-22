@@ -67,6 +67,13 @@ router.post("/login", async(req,res) => {
             return res.render('auth/login', {message: "Username or password incorrect"});
         }
 
+        req.session.currentUser = {
+            username: foundUser.username,
+            id: foundUser._id,
+            favGames: foundUsers.favGames,
+            favDevs: foundUser.favDevs,
+        }
+
         res.redirect('/devs');
     }catch(error){
         console.log(error);
@@ -78,5 +85,5 @@ router.post("/login", async(req,res) => {
 // logout aka destroy session
     // use req.sessions.destroy();
     // ten redirect to home page
-
+router.post("/logout", async ())
 module.exports = router;
