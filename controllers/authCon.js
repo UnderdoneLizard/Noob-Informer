@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const db = require("../models");
 const bcrypt = require("bcryptjs");
+const { render } = require("ejs");
  
 //make them all async try catch
 
@@ -10,7 +11,7 @@ const bcrypt = require("bcryptjs");
 //register form
     // auth/register render form
     router.get("/register", (req, res) => {
-        res.render('auth/register');
+        res.render('auth/register', {message: ''});
     })
 
 
@@ -19,7 +20,23 @@ const bcrypt = require("bcryptjs");
     // if user exists send back error (already exists)
     // if no user is found send hash+salt password
     // redirect to login
+router.post("/register", async (req, res) => {
+    try {
+        const foundEmail = await db.User.findOne({email: req.body.email})
+        const foundUsername = await db.User.findOne({username: req.body.username})
+        if(foundEmail || foundUsername) res.render("/register",{message: "username or email taken"})
 
+        const salt = await bcrypt.genSalt(10);
+        const hash = await bcrypt.hash(req.body.password, salt);
+        req.body.password = hash;
+        await db.User.create(req.body);
+        console.log(req.body)
+        res.redirect("/login")
+    } catch (error) {
+        console.log(error);
+        res.send({ message: "Internal Server Error", err: error });
+    }
+})
 
 // login form (/login)
     // render login form 
