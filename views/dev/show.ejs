@@ -9,13 +9,14 @@
     <!-- take in object called dev (data) -->
     <!-- display all dev's (data) -->
     <!-- description/icon/date/ratings/link -->
-    <h1>hit</h1>
-    name: <%= dev.name %> <br>
-    description: <%= dev.description %> 
+    <h1><%= dev.name %></h1>
+    <img src="<%= dev.icon %> " alt="">
+    <!-- TODO Description: <%= dev.description %> add the link to dev._id page  -->
+    Company Website: <a href="<%= dev.link %>"><%= dev.name %> </a>
     <form action="/devs/<%= dev._id %>?_method=DELETE" method="POST">
         <input type="submit" value="Delete">
     </form>
-    <a href="/games">Games Page</a>
+    <a href="/games">Games Page</a> |
     <a href="/devs">Developer Page</a>
 </body>
 </html>
