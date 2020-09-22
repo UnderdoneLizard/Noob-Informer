@@ -104,4 +104,20 @@ router.put("/:id", async (req,res) => {
 // delete dev/:id
     // findByIdAndDelete loop through each of the devs games id and remove dev. redirect to devs page.
 
+router.delete("/:id", async(req,res) => {
+    try {
+        const delDev = await db.Dev.findByIdAndDelete(req.params.id);
+        
+        delDev.games.forEach(async (game) =>{
+            const temp = await db.Game.findById(game);
+            temp.dev.remove(delDev);
+        })
+
+
+    } catch (error) {
+        console.log(error);
+        res.send({ message: "Internal server error" });
+    }
+})
+
 module.exports = router;
