@@ -5,8 +5,7 @@ const methodOverride = require("method-override");
 const session = require("express-session");
 //require path
 const path = require('path');
-
-const MongoStore = require("connect-mongo")('session');
+const MongoStore = require("connect-mongo")(session);
 
 
 
@@ -35,7 +34,17 @@ app.use(express.urlencoded({extended: true}));
 // method override
 app.use(methodOverride("_method"));
 // TODO set up session (look at express blog)
-
+app.use(session({
+    resave: false,
+    saveUninitialized: true,
+    secret: "secretnoob",
+    store: new MongoStore({
+        url: "mongodb://localhost:27017/noob-sessions"
+    }),
+    cookie: {
+        maxAge: 1000 * 60 * 60 * 24 * 2
+    }
+}))
 
 
 //Routes
@@ -47,11 +56,9 @@ app.get("/", async (req,res) => {
 //game routes
 app.use("/games", controllers.game);
 //auth routes
-//app.use('/', controllers.auth);
+app.use('/', controllers.auth);
 //dev routes
 app.use("/devs", controllers.dev); 
-
-app.use('/', controllers.auth)
 
 //Server Listener
 app.listen(PORT, () => {
