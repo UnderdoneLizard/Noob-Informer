@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../models");
+const { findById } = require("../models/Dev");
 
 //make them all async try catch
 
@@ -95,6 +96,23 @@ router.put("/:id", async (req, res) => {
     return res.send({ message: "Internal server error" });
   }
 });
+
+router.delete('/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+      const delGame = await db.Game.findByIdAndDelete(id);
+
+      
+        delGame.dev.forEach(async (dev) => {
+          const temp = await db.Dev.findById(dev);
+          temp.games.remove(delGame);
+        })
+        res.redirect(`/games/`);
+  } catch (error) {
+      console.log(error);
+      res.send({ message: "Internal server error" })
+  }
+})
 // delete games/:id
 // findByIdAndDelete loop through each of the games devs id and remove games. redirect to games page.
 
