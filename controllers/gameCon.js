@@ -124,6 +124,7 @@ router.delete('/:id', async (req, res) => {
         delGame.dev.forEach(async (dev) => {
           const temp = await db.Dev.findById(dev);
           temp.games.remove(delGame);
+          temp.save();
         })
         res.redirect(`/games/`);
   } catch (error) {
@@ -151,7 +152,7 @@ router.get('/:id/addDev', async(req,res) => {
 
 router.put('/:id/addDev', async(req,res) => {
     try {
-        console.log("hello")
+        
         const dev = await db.Dev.findById(req.body.dev);
         const game = await db.Game.findById(req.params.id);
         if(game.dev){
@@ -166,8 +167,6 @@ router.put('/:id/addDev', async(req,res) => {
         }
         await game.save();
         await dev.save();
-        console.log(game);
-        console.log(dev);
         res.redirect(`/games/${game.id}`);
     } catch (error) {
         console.log(error);
