@@ -40,6 +40,9 @@ router.post("/register", async (req, res) => {
 
 // login form (/login)
     // render login form 
+router.get('/login', (req,res) =>{
+    res.render("/auth/login")
+})
 
 
 // login post 
@@ -53,6 +56,18 @@ router.post("/register", async (req, res) => {
         
         // if password incorrect 
         // return error email || password incorrect
+router.post("/login", async(req,res) => {
+    try {
+        const foundUser = await scrollBy.User.findOne({email: req.body.email});
+        if(!foundUser){
+            return res.render('/')
+        }
+    }catch(error){
+        console.log(error);
+        res.send({ message: "Internal Server Error", err: error });
+    }
+})
+
 
 // logout aka destroy session
     // use req.sessions.destroy();
