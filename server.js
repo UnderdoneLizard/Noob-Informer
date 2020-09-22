@@ -6,7 +6,7 @@ const session = require("express-session");
 //require path
 const path = require('path');
 
-// const MongoStore = require("connect-mongo")('session');
+const MongoStore = require("connect-mongo")('session');
 
 
 
