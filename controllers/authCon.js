@@ -67,16 +67,27 @@ router.post("/login", async(req,res) => {
             return res.render('auth/login', {message: "Username or password incorrect"});
         }
 
-        res.redirect('/devs');
+        
+        req.session.currentUser = {
+            username: foundUser.username,
+            id: foundUser._id,
+            // favGames: foundUsers.favGames,
+            // favDevs: foundUser.favDevs,
+        }
+
+        res.redirect('/');
     }catch(error){
         console.log(error);
         res.send({ message: "Internal Server Error", err: error });
     }
 })
 
-
+router.delete('/logout', async (req, res) => {
+    await req.session.destroy();
+    res.redirect('/');
+})
 // logout aka destroy session
     // use req.sessions.destroy();
     // ten redirect to home page
-
+// router.post("/logout", async ())
 module.exports = router;

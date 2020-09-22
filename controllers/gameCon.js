@@ -13,6 +13,7 @@ router.get("/", async (req, res) => {
 
     const context = {
       games: data,
+      user: req.session.currentUser
     };
     res.render("game/index", context);
   } catch (error) {

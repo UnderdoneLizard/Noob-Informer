@@ -19,6 +19,7 @@ const app = express();
 
 // Config
 const PORT = 3000;
+app.locals.user = session.currentUser;
 
 
 // TODO pass user info to all files with locals 
