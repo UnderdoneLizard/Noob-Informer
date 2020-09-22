@@ -47,7 +47,7 @@ app.get("/", async (req,res) => {
 //game routes
 app.use("/games", controllers.game);
 //auth routes
-// app.use('/', controllers.auth)
+//app.use('/', controllers.auth);
 //dev routes
 app.use("/devs", controllers.dev); 
 
