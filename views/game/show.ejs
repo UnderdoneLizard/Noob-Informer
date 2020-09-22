@@ -3,11 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/addons/rating.js"></script>
     <title>Game Show Page</title>
 </head>
 <body>
-    <h1>Game</h1>
-    <%= game.title %> 
+    <h1> <%= game.title %> </h1>
+    <h4>Release Date: <%= game.releaseDate %> </h4>
+    <h4>Developer: <%= game.dev %> </h4> 
+     <!--add the link to dev._id page  -->
+    <div class="container">
+        <span id="rateMe1"> Rating</span>
+      </div>
+    <div>
+        <p><%= game.description %></p>
+    </div>
+    <% if (game.dev) { %>
+        <%= dev.dev[0] %> 
+    <% } %> 
+    <a href="/games">Games Page</a> |
+    <a href="/devs">Developer Page</a>
      <!-- take in object called game (data) -->
     <!-- display all game's (data) -->
     <!-- description/icon/date/ratings/link -->
