@@ -20,8 +20,7 @@
     <% if (game.dev.length > 0) { %>
         <%= game.dev[0] %> 
     <% } %> 
-    <a href="/games">Games Page</a> |
-    <a href="/devs">Developer Page</a>
+    <%- include('../partials/navbar')%>
      <!-- take in object called game (data) -->
     <!-- display all game's (data) -->
     <!-- description/icon/date/ratings/link -->
