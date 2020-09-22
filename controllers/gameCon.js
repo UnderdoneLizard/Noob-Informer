@@ -134,4 +134,17 @@ router.delete('/:id', async (req, res) => {
 // delete games/:id
 // findByIdAndDelete loop through each of the games devs id and remove games. redirect to games page.
 
+router.get('/:id/addDev', async(req,res) => {
+    try {
+        const devs = db.Dev.find({});
+        const context = {
+            devs: devs
+        }
+        res.render("game/addDev", context);
+    } catch (error) {
+        console.log(error);
+        res.send({ message: "Internal server error" })
+    }
+})
+
 module.exports = router;
