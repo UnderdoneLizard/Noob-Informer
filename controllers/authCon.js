@@ -91,5 +91,29 @@ router.delete('/logout', async (req, res) => {
     // use req.sessions.destroy();
     // ten redirect to home page
 // router.post("/logout", async ())
+router.put('/addGameFav', async(req,res) => {
+    try {
+        const user = req.session.currentUser;
+        if(user.favGames){
+            user.favGames.push(req.body.game);
+        }else{
+            user.favGames = [req.body.game]
+        }
+        user.save();
+
+    } catch (error) {
+        console.log(error);
+        res.send({ message: "Internal Server Error", err: error });
+    }
+})
+router.put('/addDevFav', async(req,res) => {
+
+})
+router.put('/rmGameFav', async(req,res) => {
+
+})
+router.put('/rmDevFav', async(req,res) => {
+
+})
 
 module.exports = router;
