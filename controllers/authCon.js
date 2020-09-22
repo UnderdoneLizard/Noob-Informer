@@ -1,7 +1,7 @@
-// const express = require("express");
-// const router = express.Router();
-// const db = require("../models");
-// const bcrypt = require("bcryptjs"); // ?????????/ hashing function
+const express = require("express");
+const router = express.Router();
+const db = require("../models");
+const bcrypt = require("bcryptjs");
  
 //make them all async try catch
 
@@ -9,6 +9,9 @@
 
 //register form
     // auth/register render form
+    router.get("/register", (req, res) => {
+        res.render('auth/register');
+    })
 
 
 // register post 
@@ -38,4 +41,4 @@
     // use req.sessions.destroy();
     // ten redirect to home page
 
-// modules.exports = router;
+module.exports = router;
