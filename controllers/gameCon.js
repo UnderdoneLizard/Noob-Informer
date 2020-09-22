@@ -134,4 +134,45 @@ router.delete('/:id', async (req, res) => {
 // delete games/:id
 // findByIdAndDelete loop through each of the games devs id and remove games. redirect to games page.
 
+router.get('/:id/addDev', async(req,res) => {
+    try {
+        const devs = await db.Dev.find({});
+        const game = await db.Game.findById(req.params.id)
+        const context = {
+            devs: devs,
+            game: game
+        }
+        res.render("game/addDev", context);
+    } catch (error) {
+        console.log(error);
+        res.send({ message: "Internal server error" })
+    }
+})
+
+router.put('/:id/addDev', async(req,res) => {
+    try {
+        console.log("hello")
+        const dev = await db.Dev.findById(req.body.dev);
+        const game = await db.Game.findById(req.params.id);
+        if(game.dev){
+        game.dev.push(req.body.dev);
+        }else{
+            game.dev = [dev]
+        }
+        if(dev.game){
+        dev.games.push(req.params.id);
+        }else {
+            dev.games = [game]
+        }
+        await game.save();
+        await dev.save();
+        console.log(game);
+        console.log(dev);
+        res.redirect(`/games/${game.id}`);
+    } catch (error) {
+        console.log(error);
+        res.send({ message: "Internal server error" })
+    }
+})
+
 module.exports = router;
