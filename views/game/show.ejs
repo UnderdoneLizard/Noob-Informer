@@ -35,7 +35,7 @@
 
   <% if (user) { %>
     <% if (user.favGames) { %>
-
+      
       <% if (user.favGames.includes(game._id)) { %>
         <form action="/<%= game._id %>/rmGameFav?_method=PUT" method="POST">
           <input type="submit" class="btn btn-primary" value="Remove from Favorites">
@@ -45,10 +45,11 @@
             <input type="submit" class="btn btn-primary" value="Add to Favorites">
           </form>
           <% } %>
-          <% } %> 
-          <form action="/<%= game._id %>/addGameFav?_method=PUT" method="POST">
+          <% } else{ %> 
+            <form action="/<%= game._id %>/addGameFav?_method=PUT" method="POST">
             <input type="submit" class="btn btn-primary" value="Add to Favorites">
           </form>
+        <% } %> 
   <% } %> 
   <%- include('../partials/navbar')%>
   <!-- take in object called game (data) -->
