@@ -21,6 +21,24 @@ router.get("/", async (req,res) => {
     }
 )
 
+//favs index
+router.get('/favs', async (req,res) => {
+    try {
+      const user = await db.User.findById(req.session.currentUser.id).populate("favDevs")
+
+      const data = user.favDevs
+      
+      const context = {
+        Devs: data,
+        user: req.session.currentUser
+      };
+      res.render("dev/index", context);
+    } catch (error) {
+      console.log(error);
+      res.send({ message: "Internal server error" })
+    }
+  })
+
 // devs /new
     // render form page to add dev company
     // database search for all games(context)

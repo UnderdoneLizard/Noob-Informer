@@ -22,6 +22,26 @@ router.get("/", async (req, res) => {
   }
 });
 
+//show favorites
+router.get('/favs', async (req,res) => {
+  try {
+    console.log(req.session.currentUser)
+    const user = await db.User.findById(req.session.currentUser.id).populate("favGames")
+    console.log(user)
+    console.log(user.favGames)
+    const data = user.favGames
+    
+    const context = {
+      games: data,
+      user: req.session.currentUser
+    };
+    res.render("game/index", context);
+  } catch (error) {
+    console.log(error);
+    res.send({ message: "Internal server error" })
+  }
+})
+
 // games /new
 // render form page to add games company
 // database search for all games(context)
@@ -176,5 +196,7 @@ router.put('/:id/addDev', async(req,res) => {
         res.send({ message: "Internal server error" })
     }
 })
+
+
 
 module.exports = router;

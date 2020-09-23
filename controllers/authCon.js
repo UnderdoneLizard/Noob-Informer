@@ -108,8 +108,9 @@ router.put('/:id/addGameFav', async(req,res) => {
             }
             console.log(user.favGames)
             user.save();
+            res.redirect(`/games/${req.params.id}`);
         }else{
-            res.render(`/games/${req.params.id}`);
+            res.redirect(`/games/${req.params.id}`);
         }
 
     } catch (error) {
@@ -133,6 +134,7 @@ router.put('/:id/addDevFav', async(req,res) => {
             }
             console.log(user.favDevs)
             user.save();
+            res.redirect(`/devs/${req.params.id}`);
         }else{
             res.redirect(`/devs/${req.params.id}`);
         }
@@ -145,10 +147,40 @@ router.put('/:id/addDevFav', async(req,res) => {
 
 //remove from fav list
 router.put('/:id/rmGameFav', async(req,res) => {
+    try {
+        if(req.session.currentUser){
 
+            const user = await db.User.findById(req.session.currentUser.id);
+            
+            user.favGames.remove(req.param.id)
+            user.save();
+
+            res.redirect(`/games/${req.params.id}`)
+        }else{
+            res.redirect(`/games/${req.params.id}`);
+        }
+    } catch (error) {
+        console.log(error);
+        res.send({ message: "Internal Server Error", err: error });
+    }
 })
 router.put('/:id/rmDevFav', async(req,res) => {
+    try {
+        if(req.session.currentUser){
 
+            const user = await db.User.findById(req.session.currentUser.id);
+            
+            user.favDevs.remove(req.param.id)
+            user.save();
+
+            res.redirect(`/devs/${req.params.id}`)
+        }else{
+            res.redirect(`/devs/${req.params.id}`);
+        }
+    } catch (error) {
+        console.log(error);
+        res.send({ message: "Internal Server Error", err: error });
+    }
 })
 
 module.exports = router;
