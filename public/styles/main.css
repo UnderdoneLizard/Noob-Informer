@@ -1,0 +1,18 @@
+
+/* for games && dev description */
+.descriptions {
+    color: #ffa500;
+    /* #2f4f4f */
+    background-color:#333;
+}
+
+
+/* NavBar */
+#nav {
+    position:center;
+    background-color: #2f4f4f;
+  
+}
+.bi.bi-lightning {
+    color: #ffe500;
+}
