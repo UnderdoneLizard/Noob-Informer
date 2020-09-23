@@ -25,12 +25,8 @@ router.get("/", async (req, res) => {
 //show favorites
 router.get('/favs', async (req,res) => {
   try {
-    console.log(req.session.currentUser)
     const user = await db.User.findById(req.session.currentUser.id).populate("favGames")
-    console.log(user)
-    console.log(user.favGames)
     const data = user.favGames
-    
     const context = {
       games: data,
       user: req.session.currentUser
