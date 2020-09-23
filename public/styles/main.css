@@ -1,4 +1,9 @@
-
+h1 {
+    position:absolute;
+    right:38%;
+    left:38%;
+    
+}
 /* for games && dev description */
 .descriptions {
     color: #ffa500;
@@ -11,7 +16,7 @@
 
 nav.border.border-warning.rounded-pill {
     position:absolute;
-    bottom:20px;
+    top:50px;
     right:25%;
     left:25%;
     margin-left:-150px;
