@@ -21,7 +21,9 @@
         <p><%= game.description %></p>
       </div>
         
-    
+    <form action="/<%= game._id %>/addGameFav?_method=PUT" method="POST">
+      <input type="submit" value="add to favorites" placeholder = "Add to Favorites">
+    </form>
     <% if (game.dev.length > 0) { %>
         <%= game.dev[0] %> 
     <% } %> 
@@ -29,5 +31,6 @@
      <!-- take in object called game (data) -->
     <!-- display all game's (data) -->
     <!-- description/icon/date/ratings/link -->
+    
 </body>
 </html>
