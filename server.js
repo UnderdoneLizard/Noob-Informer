@@ -48,8 +48,8 @@ app.use(session({
 }))
 
 
-app.use((req, res, next) => {
-    res.locals.user = req.session.currentUser;
+app.use(async(req, res, next) => {
+    res.locals.user = await db.User.findById(req.session.currentUser.id);
     next();
 })
 

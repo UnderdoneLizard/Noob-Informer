@@ -1,0 +1,21 @@
+<nav>
+    Noob Informer
+
+    <% if(user) {%> 
+        <% if (user.favGames) { %>
+            <%    if(user.favGames.length > 0){%>
+                <a href="/games/favs">Favorite Games</a> <br>
+                <% } %> 
+        <% } %>
+        <% if (user.favDevs) { %>
+         
+            <% if (user.favDevs > 0) { %>
+                <a href="/devs/favs">Favorite Devs</a> <br>
+                <% } %>
+        <% } %>
+    <% }else{ %>
+        <a href="/register">Register</a> <br>
+        <a href="/login">Login</a>
+    <% } %> 
+
+</nav>

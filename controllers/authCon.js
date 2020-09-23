@@ -152,7 +152,7 @@ router.put('/:id/rmGameFav', async(req,res) => {
 
             const user = await db.User.findById(req.session.currentUser.id);
             
-            user.favGames.remove(req.param.id)
+            user.favGames.remove(req.params.id)
             user.save();
 
             res.redirect(`/games/${req.params.id}`)
