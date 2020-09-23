@@ -58,7 +58,10 @@ router.get("/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const foundGames = await db.Game.findById(id).populate("dev");
-    const context = { game: foundGames };
+    const context = { 
+        game: foundGames, 
+        user: req.session.currentUser
+    };
     res.render("game/show", context);
   } catch (error) {
     console.log(error);
