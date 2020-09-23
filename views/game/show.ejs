@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/addons/rating.js"></script>
-    <title>Game Show Page</title>
+    <script src="/scripts/app.js" defer></script>
+    <link rel="stylesheet" href="/styles/main.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Game Show Page</title>
 </head>
 <body>
     <h1 class='title'> <%= game.title %> </h1>
@@ -15,9 +17,11 @@
     <div class="container">
         <span id="rateMe1"> Rating</span>
       </div>
-    <div>
+      <div class="container">
         <p><%= game.description %></p>
-    </div>
+      </div>
+        
+    
     <% if (game.dev.length > 0) { %>
         <%= game.dev[0] %> 
     <% } %> 
