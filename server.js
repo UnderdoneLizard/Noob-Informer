@@ -49,7 +49,9 @@ app.use(session({
 
 
 app.use(async(req, res, next) => {
+    if(req.session.user){
     res.locals.user = await db.User.findById(req.session.currentUser.id);
+    }
     next();
 })
 

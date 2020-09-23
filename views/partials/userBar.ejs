@@ -13,6 +13,9 @@
                 <a href="/devs/favs">Favorite Devs</a> <br>
                 <% } %>
         <% } %>
+        <form action="/logout?_method=DELETE" method="POST">
+        <input type="submit" value="Logout">
+        </form>
     <% }else{ %>
         <a href="/register">Register</a> <br>
         <a href="/login">Login</a>
