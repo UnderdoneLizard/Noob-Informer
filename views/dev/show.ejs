@@ -21,6 +21,7 @@
     <form action="/devs/<%= dev._id %>?_method=DELETE" method="POST">
         <input type="submit" value="Delete">
     </form>
+    <a href="/devs/<%= dev._id %>/edit">Edit Developer Page</a> |
         <%- include('../partials/navbar')%>
 </body>
 </html>
