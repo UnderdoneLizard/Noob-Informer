@@ -91,18 +91,25 @@ router.delete('/logout', async (req, res) => {
     // use req.sessions.destroy();
     // ten redirect to home page
 // router.post("/logout", async ())
+
+//add to favorites
 router.put('/:id/addGameFav', async(req,res) => {
     try {
-        if(req.session.currendUser){
-            const user = req.session.currentUser;
-            if(user.favGames){
+        console.log(req.session.currentUser)
+        if(req.session.currentUser){
+            const user = await db.User.findById(req.session.currentUser.id);
+            
+            if(user.favGames.length > 0){
+                if(user.favGames.includes(req.params.id)) return res.redirect(`/games/${req.params.id}`)
+
                 user.favGames.push(req.params.id);
             }else{
-                user.favGames = [req.body.game]
+                user.favGames = [req.params.id]
             }
+            console.log(user.favGames)
             user.save();
         }else{
-            
+            res.render(`/games/${req.params.id}`, {message: "sign in for this feature"});
         }
 
     } catch (error) {
@@ -111,7 +118,28 @@ router.put('/:id/addGameFav', async(req,res) => {
     }
 })
 router.put('/:id/addDevFav', async(req,res) => {
+    try {
+        console.log(req.session.currentUser)
+        if(req.session.currentUser){
+            const user = await db.User.findById(req.session.currentUser.id);
+            
+            if(user.favDevs.length > 0){
+                if(user.favDevs.includes(req.params.id)) return res.redirect(`/devs/${req.params.id}`)
 
+                user.favDevs.push(req.params.id);
+            }else{
+                user.favDevs = [req.params.id]
+            }
+            console.log(user.favDevs)
+            user.save();
+        }else{
+            res.redirect(`/devs/${req.params.id}`);
+        }
+
+    } catch (error) {
+        console.log(error);
+        res.send({ message: "Internal Server Error", err: error });
+    }
 })
 router.put('/:id/rmGameFav', async(req,res) => {
 
