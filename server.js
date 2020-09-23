@@ -48,6 +48,12 @@ app.use(session({
 }))
 
 
+app.use((req, res, next) => {
+    res.locals.user = req.session.currentUser;
+    next();
+})
+
+
 //Routes
 //base route that will take user to the home page 
 app.get("/", async (req,res) => {
