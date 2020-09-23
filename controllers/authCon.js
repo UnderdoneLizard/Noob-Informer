@@ -109,7 +109,7 @@ router.put('/:id/addGameFav', async(req,res) => {
             console.log(user.favGames)
             user.save();
         }else{
-            res.render(`/games/${req.params.id}`, {message: "sign in for this feature"});
+            res.render(`/games/${req.params.id}`);
         }
 
     } catch (error) {
@@ -117,6 +117,7 @@ router.put('/:id/addGameFav', async(req,res) => {
         res.send({ message: "Internal Server Error", err: error });
     }
 })
+//add favorite dev
 router.put('/:id/addDevFav', async(req,res) => {
     try {
         console.log(req.session.currentUser)
@@ -141,6 +142,8 @@ router.put('/:id/addDevFav', async(req,res) => {
         res.send({ message: "Internal Server Error", err: error });
     }
 })
+
+//remove from fav list
 router.put('/:id/rmGameFav', async(req,res) => {
 
 })
