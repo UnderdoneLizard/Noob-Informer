@@ -28,8 +28,7 @@ router.get('/favs', async (req,res) => {
     const user = await db.User.findById(req.session.currentUser.id).populate("favGames")
     const data = user.favGames
     const context = {
-      games: data,
-      user: req.session.currentUser
+      games: data
     };
     res.render("game/index", context);
   } catch (error) {

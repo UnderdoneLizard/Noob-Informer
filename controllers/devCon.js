@@ -29,8 +29,7 @@ router.get('/favs', async (req,res) => {
       const data = user.favDevs
       
       const context = {
-        Devs: data,
-        user: req.session.currentUser
+        devs: data,
       };
       res.render("dev/index", context);
     } catch (error) {
@@ -78,7 +77,6 @@ router.get("/:id", async (req,res) => {
         const dev = await db.Dev.findById(req.params.id).populate("games")
         context = {
             dev: dev,
-            user: req.session.currentUser
         }
         res.render("dev/show", context);
     } catch (error) {
