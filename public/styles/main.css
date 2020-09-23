@@ -8,10 +8,20 @@
 
 
 /* NavBar */
-#nav {
-    position:center;
-    background-color: #2f4f4f;
-  
+
+nav.border.border-warning.rounded-pill {
+    position:absolute;
+    bottom:20px;
+    right:25%;
+    left:25%;
+    margin-left:-150px;
+    max-height: fit-content;
+    max-width: fit-content;
+    padding: 10px;
+    margin: 2px;
+    color: #ffa500;
+    text-align: center;
+    background-color: #d2dde9;
 }
 .bi.bi-lightning {
     color: #ffe500;
