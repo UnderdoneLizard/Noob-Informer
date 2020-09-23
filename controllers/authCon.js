@@ -170,7 +170,7 @@ router.put('/:id/rmDevFav', async(req,res) => {
 
             const user = await db.User.findById(req.session.currentUser.id);
             
-            user.favDevs.remove(req.param.id)
+            user.favDevs.remove(req.params.id)
             user.save();
 
             res.redirect(`/devs/${req.params.id}`)
