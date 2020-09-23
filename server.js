@@ -59,7 +59,11 @@ app.use(async(req, res, next) => {
 //Routes
 //base route that will take user to the home page 
 app.get("/", async (req,res) => {
-    res.render("index");
+    if(req.session.currentUser){
+        res.redirect("/games");
+    }else{
+        res.redirect("/login");
+    }
 })
 
 //game routes
