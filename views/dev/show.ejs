@@ -21,6 +21,18 @@
     <form action="/devs/<%= dev._id %>?_method=DELETE" method="POST">
         <input type="submit" value="Delete">
     </form>
+    <% if (user) { %>
+        <% if (user.favDev.includes(dev._id)) { %>
+         <form action="/<%= dev._id %>/rmDevFav?_method=PUT" method="POST">
+          <input type="submit" class="btn btn-primary" value="Un-favorite">
+        </form>
+        <% } else { %>
+          <form action="/<%= dev._id %>/addDevFav?_method=PUT" method="POST">
+           <input type="submit" class="btn btn-primary" value="Add to Favorites">
+         </form>
+    
+        <% } %> 
+      <% } %> 
     <a href="/devs/<%= dev._id %>/edit">Edit Developer Page</a> |
         <%- include('../partials/navbar')%>
 </body>

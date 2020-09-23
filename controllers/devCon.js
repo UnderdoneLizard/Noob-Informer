@@ -77,7 +77,8 @@ router.get("/:id", async (req,res) => {
     try {
         const dev = await db.Dev.findById(req.params.id).populate("games")
         context = {
-            dev: dev
+            dev: dev,
+            user: req.session.currentUser
         }
         res.render("dev/show", context);
     } catch (error) {
