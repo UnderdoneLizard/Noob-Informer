@@ -1,6 +1,5 @@
-Noob Informer
+<h1>NOOBiNFORMER</h1> 
 <nav class="userBar">
-
     <% if(user) {%> 
         <% if (user.favGames) { %>
             <%    if(user.favGames.length > 0){%>
@@ -8,13 +7,13 @@ Noob Informer
                 <% } %> 
         <% } %>
         <% if (user.favDevs) { %>
-         
+        
             <% if (user.favDevs.length > 0) { %>
                 <a href="/devs/favs">Favorite Devs</a> <br>
                 <% } %>
         <% } %>
         <form action="/logout?_method=DELETE" method="POST">
-        <input type="submit" value="Logout">
+        <input class="btn btn-dark" type="submit" value="Logout">
         </form>
     <% }else{ %>
         <a href="/register">Register</a> <br>

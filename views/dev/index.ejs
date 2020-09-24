@@ -3,15 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/main.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <title>Document</title>
 </head>
 <body>
     <%- include("../partials/userBar") %> 
     
-    <% devs.forEach(dev => { %>
-    <a href="/devs/<%= dev._id %>"><%= dev.name %> </a>
-    <% }) %>
+    <div class="container card">
+        <div class="row">
+            <% devs.forEach(dev => { %>
+            <div class="col-6 col-sm-4">
+                <div class="card">
+                    <img src="<%= dev.icon %>" alt="">
+                </div>
+                <div class="w-100 d-none d-md-block">
+                    <a href="/devs/<%= dev._id %>"><%= dev.name %> </a>
+                    <a href="/devs/<%= dev._id %>/edit">Edit</a>
+                    <form action="/devs/<%= dev._id %>?_method=DELETE" method="POST">
+                        <input type="submit" value="DELETE">
+                    </form>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+    </div>
+
+
     
     <!-- devs.ForEach list out each dev && icon -->
     <%- include('../partials/navbar')%>
