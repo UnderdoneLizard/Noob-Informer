@@ -75,6 +75,7 @@ router.post("/", async (req, res) => {
 router.get("/:id", async (req,res) => {
     try {
         const dev = await db.Dev.findById(req.params.id).populate("games")
+        console.log(dev.games)
         context = {
             dev: dev,
         }

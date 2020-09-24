@@ -1,6 +1,7 @@
 <h1>NOOBiNFORMER</h1> 
 <nav class="userBar">
     <% if(user) {%> 
+
         <% if (user.favGames) { %>
             <%    if(user.favGames.length > 0){%>
                 <a href="/games/favs">Favorite Games</a> <br>
@@ -15,9 +16,13 @@
         <form action="/logout?_method=DELETE" method="POST">
         <input class="btn btn-dark" type="submit" value="Logout">
         </form>
-    <% }else{ %>
-        <a href="/register">Register</a> <br>
-        <a href="/login">Login</a>
+        <% }else{ %>
+        <form action="/login" method="POST">
+            <input class="btn btn-dark" type="submit" value="Login">
+        </form>
+        <form action="/register" method="POST">
+            <input class="btn btn-dark" type="submit" value="Register">
+        </form>
     <% } %> 
 
 </nav>

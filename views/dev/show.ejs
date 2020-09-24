@@ -12,14 +12,12 @@
     <!-- display all dev's (data) -->
     <!-- description/icon/date/ratings/link -->
     <%- include("../partials/userBar") %> 
+    <div class="display">
     <h1><%= dev.name %></h1>
-    <img src="<%= dev.icon %> " alt="">
-    Description: <%= dev.description %> 
+    <img src="<%= dev.icon %> " alt=""> <br>
+    <p><%= dev.description %> </p> <br>
     <!-- add the link to game._id page games corresponding to dev company -->
     Company Website: <a href="<%= dev.link %>"><%= dev.name %> </a>
-    <% if (dev.games.length > 0) { %>
-        <%= dev.games[0] %> 
-    <% } %> 
     <form action="/devs/<%= dev._id %>?_method=DELETE" method="POST">
         <input type="submit" value="Delete">
     </form>
@@ -44,9 +42,28 @@
           <form action="/<%= dev._id %>/addDevFav?_method=PUT" method="POST">
           <input type="submit" class="btn btn-primary" value="Add to Favorites">
         </form>
-  
+      </div>
           <% } %> 
     <% } %> 
+    <div class="container card">
+      <div class="row">
+          <% dev.games.forEach(game => { %>
+          <div class="col-6 col-sm-4">
+              <div class='img-container'>
+                  <img class="img-card" src="<%= game.img %>" alt="">
+              </div>
+              <div class="w-100 d-none d-md-block">
+                  <a href="/games/<%= game._id %>"><%= game.title %></a>
+                  <a href="/games/<%= game._id %>/edit">Edit</a>
+                  <form action="/games/<%= game._id %>?_method=DELETE" method="POST">
+                      <input type="submit" value="DELETE">
+                  </form>
+              </div>
+          </div>
+          <% }) %>
+      </div>
+  </div>
+
     <a href="/devs/<%= dev._id %>/edit">Edit Developer Page</a> |
         <%- include('../partials/navbar')%>
 </body>

@@ -1,7 +1,7 @@
 //set up connection with mongoose with the connection string and all that 
 const mongoose = require("mongoose");
 
-const connectionString = "mongodb://localhost:27017/noob";
+const connectionString = process.env.MONGODB_URI || "mongodb://localhost:27017/noob";
 
 mongoose
 .connect(connectionString, {

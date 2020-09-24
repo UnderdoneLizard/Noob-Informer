@@ -3,17 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/main.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <title>Document</title>
 </head>
 <body>
-    <h1>Register an account</h1>
+    <h1>NOOBiNFORMER</h1>
+<div class="form rounded">
+    <p>Register an account</p>
     <form action="/register" method="POST">
         <input type="text" name="username" placeholder="UserName" required />
         <input type="email" name="email" placeholder="Email" required />
         <input type="password" name='password' placeholder="Password" required />
         <input type="submit" value="Register">
     </form>
+</div>
     <!-- action="/create" a method="POST" form -->
     <!-- form needs username password and email -->
     <%- include('../partials/navbar')%>

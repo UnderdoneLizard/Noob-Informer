@@ -13,7 +13,6 @@ router.get("/", async (req, res) => {
 
     const context = {
       games: data,
-      user: req.session.currentUser
     };
     res.render("game/index", context);
   } catch (error) {
@@ -177,7 +176,7 @@ router.put('/:id/addDev', async(req,res) => {
         }else{
             game.dev = [dev]
         }
-        if(dev.game){
+        if(dev.games){
         dev.games.push(req.params.id);
         }else {
             dev.games = [game]

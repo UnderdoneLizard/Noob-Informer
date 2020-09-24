@@ -19,8 +19,8 @@
         <div class="row">
             <% games.forEach(game => { %>
             <div class="col-6 col-sm-4">
-                <div>
-                    <img src="<%= game.img %>" alt="">
+                <div class='img-container'>
+                    <img class="img-card" src="<%= game.img %>" alt="">
                 </div>
                 <div class="w-100 d-none d-md-block">
                     <a href="/games/<%= game._id %>"><%= game.title %></a>

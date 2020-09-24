@@ -1,0 +1,17 @@
+
+.container.card {
+    /* position:absolute; */
+    top:200px;
+    right:15%;
+    left:2%;
+    background-color:#333;
+    border: none;
+}
+.img-container {
+    height:150px;
+    width: 300px;
+}
+.img-card {
+    height: 100%;
+    width: 100%;
+}

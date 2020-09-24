@@ -38,9 +38,9 @@ app.use(methodOverride("_method"));
 app.use(session({
     resave: false,
     saveUninitialized: true,
-    secret: "secretnoob",
+    secret: "beans",
     store: new MongoStore({
-        url: "mongodb://localhost:27017/noob-sessions"
+        url: process.env.MONGODB_URI || "mongodb://localhost:27017/noob-sessions"
     }),
     cookie: {
         maxAge: 1000 * 60 * 60 * 24 * 2
@@ -51,6 +51,8 @@ app.use(session({
 app.use(async (req, res, next) => {
     if(req.session.currentUser){
     res.locals.user = await db.User.findById(req.session.currentUser.id);
+    }else{
+        user = undefined;
     }
     next();
     //hello
