@@ -19,7 +19,7 @@ const app = express();
 
 // Config
 const PORT = 3000;
-app.locals.user = session.currentUser;
+
 
 
 // TODO pass user info to all files with locals 
@@ -48,8 +48,8 @@ app.use(session({
 }))
 
 
-app.use(async(req, res, next) => {
-    if(req.session.user){
+app.use(async (req, res, next) => {
+    if(req.session.currentUser){
     res.locals.user = await db.User.findById(req.session.currentUser.id);
     }
     next();

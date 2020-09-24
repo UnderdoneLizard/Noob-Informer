@@ -1,8 +1,29 @@
 h1 {
-    position:absolute;
-    right:38%;
-    left:38%;
+    text-align: center;
+
 }
+
+body{
+    margin: 0;
+    height: 100vh;
+    font-family: Helvetica, sans-serif;
+    position:relative;
+}
+
+/* GameShow */
+.container.card {
+    /* position:absolute; */
+    top:200px;
+    right:15%;
+    left:2%;
+    background-color:#333;
+}
+
+.card img {
+    max-height: 50%;
+    max-width: 50%;
+}
+
 /* for games && dev description */
 .descriptions {
     color: #ffa500;
@@ -29,4 +50,10 @@ nav.border.border-warning.rounded-pill {
 }
 .bi.bi-lightning {
     color: #ffe500;
+}
+
+.userBar {
+    position:absolute;
+    right: 0;
+    top:0;
 }
