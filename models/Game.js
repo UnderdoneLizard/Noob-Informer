@@ -1,6 +1,5 @@
-//bring in mongoose 
 const mongoose = require('mongoose');
-//make a schema 
+
 const gameSchema = new mongoose.Schema(
 {
     title: {type: String, required: true, unique: true},
@@ -18,7 +17,7 @@ const gameSchema = new mongoose.Schema(
     timestamps: true
 })
 
-//make model 
+
 const Game = mongoose.model("Game", gameSchema);
-//export the model 
+
 module.exports = Game;

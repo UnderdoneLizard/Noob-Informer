@@ -7,9 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <!-- receive game data-info -->
-    <!-- create form with user input -->
-    <!--  action = game/ :id/ update method=POST -->
     <h1>Edit <%= game.title %> </h1>
     <form action="/games/<%= game._id %>?_method=PUT" method="POST">
         Title: <input type="text" name="title" value="<%= game.title %> "/><br>
