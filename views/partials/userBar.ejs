@@ -4,13 +4,17 @@
 
         <% if (user.favGames) { %>
             <%    if(user.favGames.length > 0){%>
-                <a href="/games/favs">Favorite Games</a> <br>
+                <form action="/devs/favs" method="GET">
+                    <input class="btn btn-dark" type="submit" value="Favorite Devs">
+                </form>
                 <% } %> 
         <% } %>
         <% if (user.favDevs) { %>
         
             <% if (user.favDevs.length > 0) { %>
-                <a href="/devs/favs">Favorite Devs</a> <br>
+                <form action="/games/favs" method="GET">
+                    <input class="btn btn-dark" type="submit" value="Favorite Games">
+                </form>
                 <% } %>
         <% } %>
         <form action="/logout?_method=DELETE" method="POST">
@@ -19,9 +23,6 @@
         <% }else{ %>
         <form action="/login" method="POST">
             <input class="btn btn-dark" type="submit" value="Login">
-        </form>
-        <form action="/register" method="POST">
-            <input class="btn btn-dark" type="submit" value="Register">
         </form>
     <% } %> 
 

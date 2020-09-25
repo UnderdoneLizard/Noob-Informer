@@ -5,6 +5,7 @@ const methodOverride = require("method-override");
 const session = require("express-session");
 //require path
 const path = require('path');
+require('dotenv').config();
 const MongoStore = require("connect-mongo")(session);
 
 
@@ -38,7 +39,7 @@ app.use(methodOverride("_method"));
 app.use(session({
     resave: false,
     saveUninitialized: true,
-    secret: "beans",
+    secret: process.env.SECRET,
     store: new MongoStore({
         url: process.env.MONGODB_URI || "mongodb://localhost:27017/noob-sessions"
     }),

@@ -28,7 +28,7 @@ h1 {
     flex-direction: column;
     background-color: #333;
     width: 25%;
-    height: 15%;
+    height: 17%;
     margin-top: 100px;
 }
 
@@ -72,9 +72,8 @@ color: #f5fffa
 nav.border.rounded-pill {
     position:absolute;
     top:50px;
-    right:25%;
+    right:30%;
     left:25%;
-    margin-left:-150px;
     max-height: fit-content;
     max-width: fit-content;
     padding: 10px;
@@ -96,10 +95,17 @@ nav.border.rounded-pill {
 /* display for dev */
 .display {
     text-align: center;
-    margin: 0 auto;
+    margin: 75px auto;
 }
 .display p {
     max-width: 350px;
     text-align: center;
-    margin: 0 auto;
+    margin: 25px auto;
+    background-color: #333;
+    color: #d6800f;
+}
+
+.link{
+    background-color: #333;
+    color: #d6800f;
 }

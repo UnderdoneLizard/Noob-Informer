@@ -14,10 +14,13 @@
     <%- include("../partials/userBar") %> 
     <div class="display">
     <h1><%= dev.name %></h1>
-    <img src="<%= dev.icon %> " alt=""> <br>
-    <p><%= dev.description %> </p> <br>
-    <!-- add the link to game._id page games corresponding to dev company -->
-    Company Website: <a href="<%= dev.link %>"><%= dev.name %> </a>
+    
+    
+  
+      <img src="<%= dev.icon %>" alt=""> <br>
+
+    <p class="rounded"><%= dev.description %> </p> <br>
+    
     <form action="/devs/<%= dev._id %>?_method=DELETE" method="POST">
         <input type="submit" value="Delete">
     </form>
@@ -27,23 +30,24 @@
         <% if (user.favDevs.includes(dev._id)) { %>
   
           <form action="/<%= dev._id %>/rmDevFav?_method=PUT" method="POST">
-            <input type="submit" class="btn btn-primary" value="Remove from Favorites">
+            <input class="btn btn-dark" type="submit" class="btn btn-primary" value="Remove from Favorites">
           </form>
   
           <% } else { %>
   
             <form action="/<%= dev._id %>/addDevFav?_method=PUT" method="POST">
-              <input type="submit" class="btn btn-primary" value="Add to Favorites">
+              <input class="btn btn-dark" type="submit" class="btn btn-primary" value="Add to Favorites">
             </form>
   
             <% } %>
       <% } else{ %> 
   
           <form action="/<%= dev._id %>/addDevFav?_method=PUT" method="POST">
-          <input type="submit" class="btn btn-primary" value="Add to Favorites">
+          <input class="btn btn-dark" type="submit" class="btn btn-primary" value="Add to Favorites">
         </form>
       </div>
           <% } %> 
+          <span class="rounded link">Company Website: <a href="<%= dev.link %>"><%= dev.name %> </a></span> 
     <% } %> 
     <div class="container card">
       <div class="row">
@@ -64,7 +68,6 @@
       </div>
   </div>
 
-    <a href="/devs/<%= dev._id %>/edit">Edit Developer Page</a> |
         <%- include('../partials/navbar')%>
 </body>
 </html>
