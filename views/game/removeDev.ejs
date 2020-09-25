@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <h1>add a dev</h1>
+    <form action="/games/<%=game._id%>/removeDev?_method=PUT" method="POST">
+        <select name="dev" id="">
+            <option default>Select dev</option>
+            <% devs.forEach(dev => { %>
+            <option value="<%=dev._id%>"><%= dev.name %> </option>
+            <% }) %>
+        </select>
+        <input type="submit" value="done">
+    </form>
+    <%- include('../partials/navbar')%>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="js/addons/rating.js"></script>
+  <script src="/scripts/app.js" defer></script>
+  <link rel="stylesheet" href="/styles/main.css" defer>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <title>Game Show Page</title>
+</head>
+
+<body>
+  <%- include("../partials/userBar") %>
+  <%- include('../partials/navbar')%>
+
+  <div class="container descriptions rounded">
+    <div class='img-container'>
+      <img class="img-card" src="<%= game.img %>" alt="">
+  </div>
+  <h4 class='title'> Title: <%= game.title %> </h4>
+  <h4>Release Date: <%= game.releaseDate %> </h4>
+  <!--add the link to dev._id page  -->
+  
+  <div class="container">
+    <h4>Rating</h4>
+    <p id="rating">
+      <% for( let i = 0; i < game.rating; i++ ) { %>
+        <span class="glyphicon glyphicon-fire"></span>
+      <% } %> 
+      </p>  
+    </div>
+    <h4>
+      Description:
+    </h4>
+    <h5><%= game.description %></h5>
+    <% if (user) { %>
+      <% if (user.favGames) { %>
+
+    <% if (user.favGames.includes(game._id)) { %>
+      
+      <form action="/<%= game._id %>/rmGameFav?_method=PUT" method="POST">
+        <input class="btn btn-dark" type="submit" class="btn btn-primary" value="Remove from Favorites">
+      </form>
+      
+      <% } else { %>
+        
+        <form action="/<%= game._id %>/addGameFav?_method=PUT" method="POST">
+          <input class="btn btn-dark" type="submit" class="btn btn-primary" value="Add to Favorites">
+        </form>
+        
+        <% } %>
+        <% } else{ %>
+          
+          <form action="/<%= game._id %>/addGameFav?_method=PUT" method="POST">
+            <input class="btn btn-dark" type="submit" class="btn btn-primary" value="Add to Favorites">
+          </form>
+          
+          <% } %>
+    <% } %>
+    <h4>
+      Developers:
+      <% if (game.dev.length > 0) { %>
+      <% game.dev.forEach(el => { %>
+      <a href="/devs/<%= el._id %> "><%= el.name %></a>  
+      <% }) %>
+      <% } %>
+    </h4>
+  </body>
+  
+</html>

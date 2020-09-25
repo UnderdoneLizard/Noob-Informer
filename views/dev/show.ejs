@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <%- include("../partials/userBar") %> 
+    <div class="display">
+    <h1><%= dev.name %></h1>
+    
+    
+  
+      <img src="<%= dev.icon %>" alt=""> <br>
+
+    <p class="rounded"><%= dev.description %> </p> <br>
+    
+  
+    <% if (user) { %>
+      <% if (user.favDevs) { %>
+        
+        <% if (user.favDevs.includes(dev._id)) { %>
+  
+          <form action="/<%= dev._id %>/rmDevFav?_method=PUT" method="POST">
+            <input class="btn btn-dark" type="submit" class="btn btn-primary" value="Remove from Favorites">
+          </form>
+  
+          <% } else { %>
+  
+            <form action="/<%= dev._id %>/addDevFav?_method=PUT" method="POST">
+              <input class="btn btn-dark" type="submit" class="btn btn-primary" value="Add to Favorites">
+            </form>
+  
+            <% } %>
+      <% } else{ %> 
+  
+          <form action="/<%= dev._id %>/addDevFav?_method=PUT" method="POST">
+          <input class="btn btn-dark" type="submit" class="btn btn-primary" value="Add to Favorites">
+        </form>
+      </div>
+          <% } %> 
+          <span class="rounded link">Company Website: <a href="<%= dev.link %>"><%= dev.name %> </a></span> 
+    <% } %> 
+    <div class="container card">
+      <div class="row">
+          <% dev.games.forEach(game => { %>
+          <div class="col-6 col-sm-4">
+              <div class='img-container'>
+                  <img class="img-card" src="<%= game.img %>" alt="">
+              </div>
+              <div class="w-100 d-none d-md-block">
+                  <a href="/games/<%= game._id %>"><%= game.title %></a>
+              </div>
+          </div>
+          <% }) %>
+      </div>
+  </div>
+
+        <%- include('../partials/navbar')%>
+</body>
+</html>

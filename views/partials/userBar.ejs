@@ -1,0 +1,29 @@
+<h1>NOOBiNFORMER</h1> 
+<nav class="userBar">
+    <% if(user) {%> 
+
+        <% if (user.favGames) { %>
+            <%    if(user.favGames.length > 0){%>
+                <form action="/devs/favs" method="GET">
+                    <input class="btn btn-dark" type="submit" value="Favorite Devs">
+                </form>
+                <% } %> 
+        <% } %>
+        <% if (user.favDevs) { %>
+        
+            <% if (user.favDevs.length > 0) { %>
+                <form action="/games/favs" method="GET">
+                    <input class="btn btn-dark" type="submit" value="Favorite Games">
+                </form>
+                <% } %>
+        <% } %>
+        <form action="/logout?_method=DELETE" method="POST">
+        <input class="btn btn-dark" type="submit" value="Logout">
+        </form>
+        <% }else{ %>
+        <form action="/login" method="POST">
+            <input class="btn btn-dark" type="submit" value="Login">
+        </form>
+    <% } %> 
+
+</nav>

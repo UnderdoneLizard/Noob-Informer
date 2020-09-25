@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Edit <%= game.title %> </h1>
+    <form action="/games/<%= game._id %>?_method=PUT" method="POST">
+        Title: <input type="text" name="title" value="<%= game.title %> "/><br>
+        Release Date: <input type="text" name="releaseDate"
+        value="<%= game.releaseDate %>"/><br>
+        Game Description: <input type="text" name="description" value="<%= game.description %>"/><br>
+        Image: <input type="text" name="img" value="<%= game.img%> "/><br>
+        Genre: <input type="text" name="genre" value="<%= game.genre %> "/><br>
+        Rating: <input type="number" name="rating" value="<%= game.rating %> "/><br>
+        Game Link: <input type="text" name="link" value="<%= game.link %>"/><br>
+        <input type="submit" value="Submit Changes" />
+        <%- include('../partials/navbar')%>
+    </form>
+</body>
+</html>
