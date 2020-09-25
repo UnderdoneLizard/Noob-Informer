@@ -19,6 +19,9 @@
         <form action="/register" method="GET">
             <input class="btn btn-dark" type="submit" value="register">
         </form>
+        <% if (message) { %>
+            <%= message %> 
+        <% } %>
     </div>
     <!-- action="/login" a method="POST" form -->
     <!-- form needs  username || e-mail && password -->

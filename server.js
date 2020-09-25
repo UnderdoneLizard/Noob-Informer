@@ -18,7 +18,7 @@ const controllers = require('./controllers')
 const app = express();
 
 // Config
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.set('view engine', 'ejs');
 
@@ -67,5 +67,5 @@ app.use("/devs", controllers.dev);
 
 
 app.listen(PORT, () => {
-    console.log(`Listening at port http://localhost:${PORT}`);
+    console.log(`Listening at port ${PORT}`);
 })

@@ -53,8 +53,6 @@ router.post("/login", async(req,res) => {
         req.session.currentUser = {
             username: foundUser.username,
             id: foundUser._id,
-            // favGames: foundUsers.favGames,
-            // favDevs: foundUser.favDevs,
         }
 
         res.redirect('/');
@@ -84,7 +82,6 @@ router.put('/:id/addGameFav', async(req,res) => {
             }else{
                 user.favGames = [req.params.id]
             }
-            console.log(user.favGames)
             user.save();
             res.redirect(`/games/${req.params.id}`);
         }else{

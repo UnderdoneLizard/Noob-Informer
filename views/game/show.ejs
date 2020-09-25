@@ -29,9 +29,8 @@
     <h4>Rating</h4>
     <p id="rating">
       <% for( let i = 0; i < game.rating; i++ ) { %>
-        <span class="glyphicon glyphicon-fire">
-          <% } %> 
-        </span>
+        <span class="glyphicon glyphicon-fire"></span>
+      <% } %> 
       </p>  
     </div>
     <h4>
@@ -66,7 +65,7 @@
       Developers:
       <% if (game.dev.length > 0) { %>
       <% game.dev.forEach(el => { %>
-      <%= el.name %>
+      <a href="/devs/<%= el._id %> "><%= el.name %></a>  
       <% }) %>
       <% } %>
     </h4>
