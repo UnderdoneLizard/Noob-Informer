@@ -17,6 +17,9 @@
         <input type="password" name='password' placeholder="Password" required />
         <input class="btn btn-dark" type="submit" value="Register">
     </form>
+    <% if (message) { %>
+        <%= message %> 
+    <% } %>
 </div>
     <%- include('../partials/navbar')%>
 </body>
