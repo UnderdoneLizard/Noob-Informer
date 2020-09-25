@@ -1,53 +1,87 @@
-h1 {
-    text-align: center;
+@import"./card.css";
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
 }
 
 body{
-    margin: 0;
+    background: url('./images/428b296883a41d628eb4c148b819a0de.png');
+    /* background-size: cover; */
+    box-sizing: border-box;
     height: 100vh;
     font-family: Helvetica, sans-serif;
     position:relative;
+    /* display: flex; */
 }
+
+h1 {
+    text-align: center;
+}
+
+/* login and register */
+.form{
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    background-color: #333;
+    width: 25%;
+    height: 17%;
+    margin-top: 100px;
+}
+
+.form p {
+    text-align: center;
+    margin:0 auto;
+    color: white;
+}
+
+.form input{
+    display: flex;
+    width: 75%;
+    text-align: center;
+    margin:0 auto;
+}
+
 
 /* GameShow */
-.container.card {
-    /* position:absolute; */
-    top:200px;
-    right:15%;
-    left:2%;
-    background-color:#333;
+p#rating {
+color: #f5fffa
 }
-
-.card img {
-    max-height: 50%;
-    max-width: 50%;
+.descriptions.container.rounded{
+      position:absolute;
+      top:200px;
+      right:15%;
+      left:2%;
+      background-color:#333;
+      border: none;
 }
 
 /* for games && dev description */
 .descriptions {
     color: #ffa500;
-    /* #2f4f4f */
     background-color:#333;
+    margin: 0 auto;
 }
 
 
 /* NavBar */
 
-nav.border.border-warning.rounded-pill {
+nav.border.rounded-pill {
     position:absolute;
     top:50px;
-    right:25%;
+    right:30%;
     left:25%;
-    margin-left:-150px;
     max-height: fit-content;
     max-width: fit-content;
     padding: 10px;
     margin: 2px;
-    color: #ffa500;
     text-align: center;
-    background-color: #d2dde9;
+    background-color:#333;
 }
+
 .bi.bi-lightning {
     color: #ffe500;
 }
@@ -56,4 +90,22 @@ nav.border.border-warning.rounded-pill {
     position:absolute;
     right: 0;
     top:0;
+}
+
+/* display for dev */
+.display {
+    text-align: center;
+    margin: 75px auto;
+}
+.display p {
+    max-width: 350px;
+    text-align: center;
+    margin: 25px auto;
+    background-color: #333;
+    color: #d6800f;
+}
+
+.link{
+    background-color: #333;
+    color: #d6800f;
 }

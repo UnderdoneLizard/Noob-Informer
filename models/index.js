@@ -1,7 +1,6 @@
-//set up connection with mongoose with the connection string and all that 
 const mongoose = require("mongoose");
-
-const connectionString = "mongodb://localhost:27017/noob";
+console.log(process.env.MONGODB_URI)
+const connectionString = process.env.MONGODB_URI || "mongodb://localhost:27017/noob";
 
 mongoose
 .connect(connectionString, {
@@ -20,7 +19,7 @@ mongoose
 mongoose.connection.on("disconnect", function (event) {
 console.log("mongodb disconnected", event);
 });
-//export all the required models
+
 
 module.exports = {
     Game: require("./Game"),

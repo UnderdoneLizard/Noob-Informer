@@ -3,17 +3,13 @@ const router = express.Router();
 const db = require("../models");
 const { findById } = require("../models/Dev");
 
-//make them all async try catch
-
 //index / games
-//find all the games and render the games index page with the context set as the found games
 router.get("/", async (req, res) => {
   try {
     const data = await db.Game.find({});
 
     const context = {
       games: data,
-      user: req.session.currentUser
     };
     res.render("game/index", context);
   } catch (error) {
@@ -38,8 +34,6 @@ router.get('/favs', async (req,res) => {
 })
 
 // games /new
-// render form page to add games company
-// database search for all games(context)
 router.get("/new", async (req, res) => {
   try {
     const devs = await db.Dev.find({});
@@ -53,10 +47,6 @@ router.get("/new", async (req, res) => {
 });
 
 // create / games
-// db.Dev.create
-// loop though games in req.body and database search for i.d.'s
-// add to games array in db save array
-// redirect to index (/games)
 router.post("/", async (req, res) => {
   try {
     await db.Game.create(req.body);
@@ -68,7 +58,6 @@ router.post("/", async (req, res) => {
 });
 
 // show route games/:id
-// db search with games i.d. and render page with context
 router.get("/:id", async (req, res) => {
   try {
     const id = req.params.id;
@@ -84,8 +73,6 @@ router.get("/:id", async (req, res) => {
 });
 
 // edit /:id/edit
-// render edit form
-// search for games's i.d. and redirect the edit form with context
 router.get("/:id/edit", async (req, res) => {
   try {
     const id = req.params.id;
@@ -103,7 +90,6 @@ router.get("/:id/edit", async (req, res) => {
 });
 
 // update  games/:id/update
-//findByIdAndUpdate  redirect  to games page.
 router.put("/:id", async (req, res) => {
   try {
     const id = req.params.id;
@@ -149,8 +135,7 @@ router.delete('/:id', async (req, res) => {
       res.send({ message: "Internal server error" })
   }
 })
-// delete games/:id
-// findByIdAndDelete loop through each of the games devs id and remove games. redirect to games page.
+
 
 router.get('/:id/addDev', async(req,res) => {
     try {
@@ -167,6 +152,7 @@ router.get('/:id/addDev', async(req,res) => {
     }
 })
 
+
 router.put('/:id/addDev', async(req,res) => {
     try {
         
@@ -177,7 +163,7 @@ router.put('/:id/addDev', async(req,res) => {
         }else{
             game.dev = [dev]
         }
-        if(dev.game){
+        if(dev.games){
         dev.games.push(req.params.id);
         }else {
             dev.games = [game]
@@ -190,7 +176,5 @@ router.put('/:id/addDev', async(req,res) => {
         res.send({ message: "Internal server error" })
     }
 })
-
-
 
 module.exports = router;

@@ -28,6 +28,10 @@
             <input type="text" class="form-control" name="genre"  placeholder="Genre">
         </div>
         <div class="form-group col-md-6">
+            <label>Rating</label>
+            <input type="number" class="form-control" name="rating"  placeholder="Rating">
+        </div>
+        <div class="form-group col-md-6">
             <label>Image Link</label>
             <input type="text" class="form-control" name="img"  placeholder="Genre">
         </div>
@@ -41,19 +45,9 @@
             <input type="text" class="form-control" name="link" placeholder="Link to Site">
         </div>
         <button type="submit" class="btn btn-primary" value="Create Game">Add Game</button>
-
-        <!-- <input type="text" name="title" placeholder="Title"/><br>
-        <input type="text" name="releaseDate" placeholder="Release Date"/><br>
-        <input type="text" name="description" placeholder="Description"/><br>
-        <input type="text" name="img" placeholder="Link to Image"/><br>
-        <input type="text" name="genre" placeholder="Genre"/><br>
-        <input type="text" name="link" placeholder="Link to Website"/><br>
-        <input type="submit" value="Create Game" /> -->
-
     </form>
+    
     <%- include('../partials/navbar')%>
-    <!-- create form with user input -->
-    <!--  action = game/ :id/ create method=POST -->
 </body>
 
 </html>

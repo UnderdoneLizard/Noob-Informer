@@ -9,59 +9,67 @@
   <link rel="stylesheet" href="/styles/main.css" defer>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <title>Game Show Page</title>
 </head>
 
 <body>
-  <%- include("../partials/userBar") %> 
-  <h1 class='title'> <%= game.title %> </h1>
-  <h4>Release Date: <%= game.releaseDate %> </h4>
-  <h4>
-    Developers:
-    <% if (game.dev.length > 0) { %>
-    <% game.dev.forEach(el => { %>
-    <%= el.name %>
-    <% }) %>
-    <% } %>
-  </h4>
-  <!--add the link to dev._id page  -->
-  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-lightning" fill="currentColor"
-    xmlns="http://www.w3.org/2000/svg">
-    <path fill-rule="evenodd"
-      d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09zM4.157 8.5H7a.5.5 0 0 1 .478.647L6.11 13.59l5.732-6.09H9a.5.5 0 0 1-.478-.647L9.89 2.41 4.157 8.5z" />
-  </svg>
-  <div class="descriptions container border rounded">
-    <%= game.description %>
-
-
-  <% if (user) { %>
-    <% if (user.favGames) { %>
-      
-      <% if (user.favGames.includes(game._id)) { %>
-
-        <form action="/<%= game._id %>/rmGameFav?_method=PUT" method="POST">
-          <input type="submit" class="btn btn-primary" value="Remove from Favorites">
-        </form>
-
-        <% } else { %>
-
-          <form action="/<%= game._id %>/addGameFav?_method=PUT" method="POST">
-            <input type="submit" class="btn btn-primary" value="Add to Favorites">
-          </form>
-
-          <% } %>
-    <% } else{ %> 
-
-        <form action="/<%= game._id %>/addGameFav?_method=PUT" method="POST">
-        <input type="submit" class="btn btn-primary" value="Add to Favorites">
-      </form>
-
-        <% } %> 
-  <% } %> 
+  <%- include("../partials/userBar") %>
   <%- include('../partials/navbar')%>
-  <!-- take in object called game (data) -->
-  <!-- display all game's (data) -->
-  <!-- description/icon/date/ratings/link -->
-</body>
 
+  <div class="container descriptions rounded">
+    <div class='img-container'>
+      <img class="img-card" src="<%= game.img %>" alt="">
+  </div>
+  <h4 class='title'> Title: <%= game.title %> </h4>
+  <h4>Release Date: <%= game.releaseDate %> </h4>
+  <!--add the link to dev._id page  -->
+  
+  <div class="container">
+    <h4>Rating</h4>
+    <p id="rating">
+      <% for( let i = 0; i < game.rating; i++ ) { %>
+        <span class="glyphicon glyphicon-fire">
+          <% } %> 
+        </span>
+      </p>  
+    </div>
+    <h4>
+      Description:
+    </h4>
+    <h5><%= game.description %></h5>
+    <% if (user) { %>
+      <% if (user.favGames) { %>
+
+    <% if (user.favGames.includes(game._id)) { %>
+      
+      <form action="/<%= game._id %>/rmGameFav?_method=PUT" method="POST">
+        <input class="btn btn-dark" type="submit" class="btn btn-primary" value="Remove from Favorites">
+      </form>
+      
+      <% } else { %>
+        
+        <form action="/<%= game._id %>/addGameFav?_method=PUT" method="POST">
+          <input class="btn btn-dark" type="submit" class="btn btn-primary" value="Add to Favorites">
+        </form>
+        
+        <% } %>
+        <% } else{ %>
+          
+          <form action="/<%= game._id %>/addGameFav?_method=PUT" method="POST">
+            <input class="btn btn-dark" type="submit" class="btn btn-primary" value="Add to Favorites">
+          </form>
+          
+          <% } %>
+    <% } %>
+    <h4>
+      Developers:
+      <% if (game.dev.length > 0) { %>
+      <% game.dev.forEach(el => { %>
+      <%= el.name %>
+      <% }) %>
+      <% } %>
+    </h4>
+  </body>
+  
 </html>

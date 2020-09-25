@@ -1,7 +1,5 @@
-//connect mongoose 
 const mongoose = require("mongoose");
 
-//make schema 
 const devSchema = new mongoose.Schema(
     {
         name: {type: String, required: true},

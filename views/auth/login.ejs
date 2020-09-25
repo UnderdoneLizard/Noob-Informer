@@ -3,16 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/main.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <title>Login</title>
 </head>
 <body>
-    <h1> Welcome Back!</h1>
-    <form action="/login" method="POST">
-        <input type="email" name="email" placeholder="Email" required />
-        <input type="password" name="password" placeholder="Password" required />
-        <input type="submit" value="Login">
-    </form>
+    <h1>NOOBiNFORMER</h1>
+    <div class="form rounded">
+        <p> Welcome Back!</p>
+        <form action="/login" method="POST">
+            <input type="email" name="email" placeholder="Email" required/>
+            <input  type="password" name="password" placeholder="Password" required />
+            <input class="btn btn-dark" type="submit" value="Login">
+        </form>
+        <form action="/register" method="GET">
+            <input class="btn btn-dark" type="submit" value="register">
+        </form>
+    </div>
     <!-- action="/login" a method="POST" form -->
     <!-- form needs  username || e-mail && password -->
     <%- include('../partials/navbar')%>
